@@ -4,9 +4,15 @@ updates:
   - package-ecosystem: "gitsubmodule"
     directory: "/"          # 레포 루트에 .gitmodules가 있으므로 /
     schedule:
-      interval: "daily"     # 매일 체크 (혹은 "weekly")
-    # optional: 특정 경로만 관리하고 싶을 때 allow 사용 가능
-    # allow:
-    #   - dependency-name: "backend"
-    #   - dependency-name: "frontend"
+      interval: "daily"     # 매일 체크
+      time: "09:00"         # 오전 9시에 실행
+      timezone: "Asia/Seoul"
+    # 자동 머지를 위한 설정
+    open-pull-requests-limit: 10
+    reviewers:
+      - "IT-Cotato/maintainers"  # 리뷰어 그룹 (선택사항)
+    # 특정 서브모듈만 관리
+    allow:
+      - dependency-name: "backend"
+      - dependency-name: "frontend"
 
